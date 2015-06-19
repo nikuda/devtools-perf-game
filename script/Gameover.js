@@ -1,7 +1,7 @@
 ENGINE.Gameover = {
 
-  score: 737,
-  hiscore: 0,
+  score: 0,
+  hiscore: localStorage.getItem("hiscore") || 0,
 
   starOff: [382, 177, 15, 16],
   starOn: [339, 169, 37, 37],
@@ -18,12 +18,10 @@ ENGINE.Gameover = {
 
     app.renderer.setSmoothing(true);
 
-    var hiscore = localStorage.getItem("hiscore") | 0;
-
-    if (hiscore < this.score) {
+    if (this.score > this.hiscore) {
 
       this.hiscore = this.score;
-      localStorage.setItem("hiscore", hiscore);
+      localStorage.setItem("hiscore", this.hiscore | 0);
 
     }
 
